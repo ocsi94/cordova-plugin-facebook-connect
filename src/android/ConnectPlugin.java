@@ -874,6 +874,10 @@ public class ConnectPlugin extends CordovaPlugin {
         }
         SharePhoto photo = photoBuilder.build();
         SharePhotoContent.Builder photoContentBuilder = new SharePhotoContent.Builder();
+	 // hastag can be used for prefill message
+	if (paramBundle.containsKey("message"))
+          photoContentBuilder.setShareHashtag(new ShareHashtag.Builder().setHashtag(paramBundle.get("message")).build());
+
         photoContentBuilder.addPhoto(photo);
 
         return photoContentBuilder.build();
